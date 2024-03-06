@@ -37,11 +37,21 @@ public abstract class BaseTest {
     @BeforeMethod
     protected void beforeMethod(Method method, ITestResult result) throws MalformedURLException {
 
-        DesiredCapabilities cap = new DesiredCapabilities();
+        String platform = "local";
 
-        cap.setBrowserName("chrome");
+        if(platform.equalsIgnoreCase("local")) {
+            driver = BaseUtils.createDriver();
 
-        this.driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), cap);
+        }
+        if(platform.equalsIgnoreCase("remote")) {
+
+            DesiredCapabilities cap = new DesiredCapabilities();
+
+            cap.setBrowserName("chrome");
+
+            this.driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), cap);
+        }
+
         Reporter.log(ReportUtils.END_LINE, true);
         Reporter.log("TEST RUN", true);
         Reporter.log(ReportUtils.getClassNameTestName(method, result), true);
