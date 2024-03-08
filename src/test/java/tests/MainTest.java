@@ -5,6 +5,8 @@ import org.openqa.selenium.NoSuchElementException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.MainPage;
+import pages.TestData;
+
 import java.io.IOException;
 
 public class MainTest extends BaseTest {
@@ -245,5 +247,27 @@ public class MainTest extends BaseTest {
                 .waitTillSearchDropdownMenuIsVisible();
 
         Assert.assertTrue(mainPage.verifySearchDropdownListShowsCorrespondingResults(cityName));
+    }
+
+    @Test(dataProvider = "ApiIconsMainPage", dataProviderClass = TestData.class)
+    public void testAPIIconsNavigateToCorrespondingPages(
+            int index, String iconName, String iconDescription, String href, String expectedURL, String expectedTitle) {
+
+        MainPage mainPage = openBaseURL();
+
+        final String oldURL = mainPage.getCurrentURL();
+        final String oldTitle = mainPage.getTitle();
+
+        mainPage
+                .scrollByOrangeBackground()
+                .clickApiIcon(index);
+
+        String actualURL = getDriver().getCurrentUrl();
+        String actualTitle = getDriver().getTitle();
+
+        Assert.assertNotEquals(oldURL, actualURL);
+        Assert.assertNotEquals(oldTitle, actualTitle);
+        Assert.assertEquals(actualURL, expectedURL);
+        Assert.assertEquals(actualTitle, expectedTitle);
     }
 }

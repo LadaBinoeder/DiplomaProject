@@ -9,8 +9,6 @@ import java.util.Date;
 
 public class ReportUtils {
 
-
-
     private final static String H_LINE = "======================================================================\n";
     public final static String END_LINE = "\n___________________________________________________________________";
 

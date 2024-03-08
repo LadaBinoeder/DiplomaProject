@@ -53,4 +53,10 @@ public class TestUtils {
 
         return isExists;
     }
+
+    public static String getSubstring(String text, String separator) {
+        int index = text.indexOf(separator);
+
+        return text.substring(0, index);
+    }
 }

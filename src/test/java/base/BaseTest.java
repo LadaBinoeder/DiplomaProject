@@ -38,6 +38,7 @@ public abstract class BaseTest {
     protected void beforeMethod(Method method, ITestResult result) throws MalformedURLException {
 
         String platform = "local";
+        String browser = "chrome";
 
         if(platform.equalsIgnoreCase("local")) {
             driver = BaseUtils.createDriver();
@@ -47,7 +48,13 @@ public abstract class BaseTest {
 
             DesiredCapabilities cap = new DesiredCapabilities();
 
-            cap.setBrowserName("chrome");
+            if(browser.equalsIgnoreCase("chrome")) {
+                cap.setBrowserName("chrome");
+            }
+
+            if(browser.equalsIgnoreCase("firefox")) {
+                cap.setBrowserName("firefox");
+            }
 
             this.driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), cap);
         }
@@ -72,26 +79,11 @@ public abstract class BaseTest {
 
     }
 
-    protected WebDriverWait getWait5() {
-        if(webDriverWait5 == null) {
-            webDriverWait5 = new WebDriverWait(driver, Duration.ofSeconds(5));
-        }
-        return webDriverWait5;
-
-    }
     protected WebDriverWait getWait10() {
         if(webDriverWait10 == null) {
             webDriverWait10 = new WebDriverWait(driver, Duration.ofSeconds(10));
         }
         return webDriverWait10;
-
-    }
-
-    protected WebDriverWait getWait20() {
-        if(webDriverWait20 == null) {
-            webDriverWait20 = new WebDriverWait(driver, Duration.ofSeconds(20));
-        }
-        return webDriverWait20;
 
     }
 

@@ -12,6 +12,12 @@ import java.util.List;
 
 public class MainPage extends FooterMenuPage {
 
+    @FindBy(xpath = "//div/a[@href='/current']")
+    private WebElement currentWeatherIcon;
+
+    @FindBy(xpath = "//div[@class='section orange-background white-text']")
+    private WebElement orangeBackground;
+
     @FindBy(xpath = "//div[@class = 'mobile-padding main-page banner-content main-website']/h1/span")
     private WebElement header;
 
@@ -71,6 +77,9 @@ public class MainPage extends FooterMenuPage {
 
     @FindBy(xpath = "//ul[@class = 'search-dropdown-menu']/li")
     private List<WebElement> searchDropdownList;
+
+    @FindBy(xpath = "//div/a[@class='stats white-text']")
+    private List<WebElement> apiIcons;
 
     public MainPage(WebDriver driver) {
         super(driver);
@@ -358,5 +367,43 @@ public class MainPage extends FooterMenuPage {
         }
 
         return noErrors;
+    }
+
+    public MainPage scrollToFooterMenu() {
+        scrollByVisibleElement(getFooterMenu());
+
+        return this;
+    }
+
+    public String getTitle() {
+
+        return getDriver().getTitle();
+    }
+
+    public String getCurrentURL() {
+
+        return getDriver().getCurrentUrl();
+    }
+
+    public MainPage scrollByOrangeBackground() {
+        scrollByVisibleElement(orangeBackground);
+
+        return this;
+    }
+
+    public List<WebElement> getApiIcons() {
+
+        return apiIcons;
+    }
+
+    public void clickApiIcon(int index) {
+        click(getApiIcons().get(index));
+    }
+
+    public CurrentWeatherPage clickCurrentWeatherIcon() {
+        wait10ElementToBeClickable(currentWeatherIcon);
+        click20(currentWeatherIcon);
+
+        return new CurrentWeatherPage(getDriver());
     }
 }

@@ -49,14 +49,6 @@ public abstract class BasePage {
 
     }
 
-    protected Actions getActions() {
-        if(actions == null) {
-            actions = new Actions(driver);
-        }
-        return actions;
-
-    }
-
     protected String getText(WebElement webElement) {
         if(webElement.getText().isEmpty()) {
             getWait10().until(ExpectedConditions.visibilityOf(webElement));
@@ -203,4 +195,99 @@ public abstract class BasePage {
 
     }
 
+    protected void scrollByVisibleElement(WebElement element) {
+        JavascriptExecutor js = (JavascriptExecutor) getDriver();
+        js.executeScript("arguments[0].scrollIntoView();", element);
+    }
+
+    protected boolean areElementsInListDisplayed(List<WebElement> list) {
+        boolean result = false;
+
+        for (WebElement element : list) {
+            if (element.isDisplayed()) {
+                result = true;
+            } else {
+
+                return false;
+            }
+        }
+
+        return result;
+    }
+
+    protected boolean isElementDisplayed(WebElement element) {
+
+        return element.isDisplayed();
+    }
+
+    protected List<String> getTexts(List<WebElement> list) {
+        if (list.size() > 0) {
+            getWait20().until(ExpectedConditions.visibilityOfAllElements(list));
+            List<String> textList = new ArrayList<>();
+            for (WebElement element : list) {
+                if (element.isEnabled() && element.isDisplayed()) {
+                    textList.add(element.getText());
+                }
+            }
+
+            return textList;
+        }
+
+        return new ArrayList<>();
+    }
+
+    protected void clear(WebElement element) {
+
+        element.clear();
+    }
+
+    protected void input(String text, WebElement element) {
+
+        element.sendKeys(text);
+    }
+
+    protected void clickEnter(WebElement element) {
+        getWait10().until(ExpectedConditions.visibilityOf(element));
+        element.sendKeys(Keys.ENTER);
+    }
+
+    protected void wait10ElementToBeVisible(WebElement element) {
+        getWait10().until(ExpectedConditions.visibilityOf(element));
+    }
+
+    protected WebElement wait10ElementToBeClickable(WebElement element) {
+
+        return getWait10().until(ExpectedConditions.elementToBeClickable(element));
+    }
+
+    protected void wait20ElementToBeVisible(WebElement element) {
+        getWait20().until(ExpectedConditions.visibilityOf(element));
+    }
+
+    protected WebElement wait20ElementToBeClickable(WebElement element) {
+
+        return getWait20().until(ExpectedConditions.elementToBeClickable(element));
+    }
+
+
+    protected void click(WebElement element) {
+        wait10ElementToBeVisible(element);
+        wait10ElementToBeClickable(element).click();
+    }
+
+    protected void switchToAnotherWindow() {
+        String originalWindow = getDriver().getWindowHandle();
+
+        for (String windowHandle : getDriver().getWindowHandles()) {
+            if (!originalWindow.equals(windowHandle) && getDriver().getWindowHandles().size() == 2) {
+                getDriver().switchTo().window(windowHandle);
+                break;
+            }
+        }
+    }
+
+    protected void click20(WebElement element) {
+        wait20ElementToBeVisible(element);
+        wait20ElementToBeClickable(element).click();
+    }
 }

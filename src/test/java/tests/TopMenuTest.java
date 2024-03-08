@@ -3,9 +3,9 @@ package tests;
 import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.MainPage;
+import pages.TestData;
 import pages.TopMenuPage;
-
-import java.util.List;
 
 public class TopMenuTest extends BaseTest {
 
@@ -38,28 +38,7 @@ public class TopMenuTest extends BaseTest {
         Assert.assertEquals(actualResult, expectedResult);
     }
 
-    @Test
-    public void testNamesOfElementsInDesktopMenu() {
 
-        final List<String> expectedDesktopMenuNames = List.of(
-                "Guide",
-                "API",
-                "Dashboard",
-                "Marketplace",
-                "Pricing",
-                "Maps",
-                "Our Initiatives",
-                "Partners",
-                "Blog",
-                "For Business",
-                "Sign in",
-                "Support"
-        );
-
-        List<String> actualDesktopMenuNames = openBaseURL().getDesktopMenuText();
-
-        Assert.assertEquals(actualDesktopMenuNames, expectedDesktopMenuNames);
-    }
 
     @Test
     public void testLogoIsClickable() {
@@ -342,5 +321,33 @@ public class TopMenuTest extends BaseTest {
 
         Assert.assertEquals(actualLink, expectedLink);
         Assert.assertTrue(newPageIsOpen);
+    }
+
+    @Test(dataProvider = "TopMenuTestData", dataProviderClass = TestData.class)
+    public void testEachTopMenuNavigatesToCorrespondingPage(
+            int index, String menuName, String href, String expectedURL, String expectedTitle) {
+
+        MainPage mainPage = openBaseURL();
+
+        String oldURL = mainPage.getCurrentURL();
+        String oldTitle = mainPage.getTitle();
+
+        mainPage.clickTopMenu(index);
+
+        String actualURL = getDriver().getCurrentUrl();
+        String actualTitle = getDriver().getTitle();
+
+        if (index != 0) {
+            Assert.assertNotEquals(actualURL, oldURL);
+            Assert.assertNotEquals(actualTitle, oldTitle);
+        }
+
+        if (index != 6) {
+            Assert.assertEquals(actualURL, expectedURL);
+        } else {
+            Assert.assertTrue(actualURL.contains(expectedURL));
+        }
+
+        Assert.assertEquals(actualTitle, expectedTitle);
     }
 }

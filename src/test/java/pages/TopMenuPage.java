@@ -3,11 +3,15 @@ package pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import utils.TestUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TopMenuPage extends BasePage {
+
+    private static final String TOP_MENU_ID = "//li[@id='desktop-menu']";
 
     @FindBy(xpath = "//ul[@id = 'first-level-nav']/li[@class = 'logo']")
     private WebElement logo;
@@ -81,6 +85,12 @@ public class TopMenuPage extends BasePage {
     @FindBy(xpath = "//ul[@class = 'dropdown-menu dropdown-visible']/li")
     private List<WebElement> submenus;
 
+    @FindBy(xpath = TOP_MENU_ID + "//input[@name='q']")
+    private WebElement searchFieldTopMenu;
+
+    @FindBy(xpath = TOP_MENU_ID + "/ul/li")
+    private List<WebElement> topMenus;
+
     public TopMenuPage(WebDriver driver) {
         super(driver);
     }
@@ -106,11 +116,6 @@ public class TopMenuPage extends BasePage {
     }
 
 
-    public List<String> getDesktopMenuText() {
-
-        return getListTexts(desktopMenuElements);
-    }
-
     public TopMenuPage clickLogo() {
 
         clickElement(logo);
@@ -128,21 +133,21 @@ public class TopMenuPage extends BasePage {
     public TopMenuPage clickGuideMenu() {
 
         clickElement(guideMenu);
-        return new GuidePage(getDriver());
+        return this;
 
     }
 
     public TopMenuPage clickAPIMenu() {
 
         clickElement(apiMenu);
-        return new ApiPage(getDriver());
+        return this;
 
     }
 
     public TopMenuPage clickDashboardMenu() {
 
         clickElement(dashboardMenu);
-        return new DashboardPage(getDriver());
+        return this;
 
     }
 
@@ -156,28 +161,28 @@ public class TopMenuPage extends BasePage {
     public TopMenuPage clickPricingMenu() {
 
         clickElement(pricingMenu);
-        return new PricePage(getDriver());
+        return this;
 
     }
 
     public TopMenuPage clickMapsMenu() {
 
         clickElement(mapsMenu);
-        return new MapsPage(getDriver());
+        return this;
 
     }
 
     public TopMenuPage clickOurInitiativesMenu() {
 
         clickElement(ourInitiativesMenu);
-        return new OurInitiativesPage(getDriver());
+        return this;
 
     }
 
     public TopMenuPage clickPartnersMenu() {
 
         clickElement(partnersMenu);
-        return new PartnersPage(getDriver());
+        return this;
 
     }
 
@@ -212,14 +217,14 @@ public class TopMenuPage extends BasePage {
     public TopMenuPage clickFAQSubmenu() {
 
         clickElement(faqSubmenu);
-        return new FaqPage(getDriver());
+        return this;
 
     }
 
     public TopMenuPage clickHowToStartSubmenu() {
 
         clickElement(howToStartSubmenu);
-        return new HowToStartPage(getDriver());
+        return this;
 
     }
 
@@ -348,4 +353,37 @@ public class TopMenuPage extends BasePage {
         return this;
 
     }
+
+    public String getEnteredValue() {
+
+        return getAttribute(searchFieldTopMenu, "value");
+    }
+
+    public FindPage inputSearchCriteriaIntoSearchField(String text) {
+        if (!getText(searchFieldTopMenu).isEmpty() && !getText(searchFieldTopMenu).isEmpty()) {
+            clear(searchFieldTopMenu);
+        }
+        input(text, searchFieldTopMenu);
+
+        return new FindPage(getDriver());
+    }
+
+    public FindPage clickEnter() {
+        clickEnter(searchFieldTopMenu);
+
+        return new FindPage(getDriver());
+    }
+
+    public void clickTopMenu(int index) {
+        List<WebElement> menus = new ArrayList<>();
+        menus.add(logo);
+        menus.addAll(topMenus);
+
+        click(menus.get(index));
+
+        if (getDriver().getWindowHandles().size() > 1) {
+            switchToAnotherWindow();
+        }
+    }
+
 }
