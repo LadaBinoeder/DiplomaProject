@@ -14,7 +14,7 @@ public class FindTest extends BaseTest {
 
     @Test
     public void testNavigationToFindPage_WithTheSameCityName() {
-        final String cityName = "Rome";
+        final String cityName = "Paris";
         final String attributeName = "value";
 
         String enteredCityName = openBaseURL()
