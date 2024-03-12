@@ -19,3 +19,6 @@ public class CurrentWeatherTest extends BaseTest {
         Assert.assertEquals(actualTemplate, expectedTemplate);
     }
 }
+
+
+

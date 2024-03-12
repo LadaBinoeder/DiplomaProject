@@ -21,3 +21,10 @@ public class CurrentWeatherPage extends FooterMenuPage{
         return getText(apiCallTemplate);
     }
 }
+
+
+
+
+
+
+

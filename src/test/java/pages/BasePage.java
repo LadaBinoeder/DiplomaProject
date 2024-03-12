@@ -1,7 +1,6 @@
 package pages;
 
 import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -17,7 +16,6 @@ public abstract class BasePage {
     private WebDriverWait wait5;
     private WebDriverWait wait10;
     private WebDriverWait wait20;
-    private Actions actions;
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
