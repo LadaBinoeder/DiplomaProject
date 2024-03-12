@@ -12,15 +12,13 @@ public class TestData {
                 {1, "Guide", "/guide", "https://openweathermap.org/guide", "OpenWeatherMap API guide - OpenWeatherMap"},
                 {2, "API", "/api", "https://openweathermap.org/api", "Weather API - OpenWeatherMap"},
                 {3, "Dashboard", "/weather-dashboard", "https://openweathermap.org/weather-dashboard", "Weather dashboard - OpenWeatherMap"},
-                {4, "Marketplace", "https://home.openweathermap.org/marketplace", "https://home.openweathermap.org/marketplace", "Marketplace: History Bulk, History Forecast Bulk, Historical Weather Data by State for all ZIP codes, USA - OpenWeather"},
-                {5, "Pricing", "/price", "https://openweathermap.org/price", "Pricing - OpenWeatherMap"},
-                {6, "Maps", "/weathermap", "https://openweathermap.org/weathermap", "Interactive weather maps - OpenWeatherMap"},
-
-                {7, "Our Initiatives", "/our-initiatives", "https://openweathermap.org/our-initiatives", "Our Initiatives - OpenWeatherMap"},
-                {8, "Partners", "/examples", "https://openweathermap.org/examples", "Partners and solutions - OpenWeatherMap"},
-                {9, "Blog", "https://openweather.co.uk/blog/category/weather", "https://openweather.co.uk/blog/category/weather", "Blog - OpenWeather"},
-                {10, "For Business", "https://openweather.co.uk", "https://openweather.co.uk/", "OpenWeather for business"},
-                {11, "Sign In", "/users/sign_in", "https://home.openweathermap.org/users/sign_in", "Members"},
+                {4, "Pricing", "/price", "https://openweathermap.org/price", "Pricing - OpenWeatherMap"},
+                {5, "Maps", "/weathermap", "https://openweathermap.org/weathermap", "Interactive weather maps - OpenWeatherMap"},
+                {6, "Our Initiatives", "/our-initiatives", "https://openweathermap.org/our-initiatives", "Our Initiatives - OpenWeatherMap"},
+                {7, "Partners", "/examples", "https://openweathermap.org/examples", "Partners and solutions - OpenWeatherMap"},
+                {8, "Blog", "https://openweather.co.uk/blog/category/weather", "https://openweather.co.uk/blog/category/weather", "Blog - OpenWeather"},
+                {9, "For Business", "https://openweather.co.uk", "https://openweather.co.uk/", "OpenWeather for business"},
+                {10, "Sign In", "/users/sign_in", "https://home.openweathermap.org/users/sign_in", "Members"},
         };
     }
 
