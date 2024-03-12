@@ -18,7 +18,7 @@ public class TestData {
 
                 {7, "Our Initiatives", "/our-initiatives", "https://openweathermap.org/our-initiatives", "Our Initiatives - OpenWeatherMap"},
                 {8, "Partners", "/examples", "https://openweathermap.org/examples", "Partners and solutions - OpenWeatherMap"},
-                {9, "Blog", "https://openweather.co.uk/blog/category/weather", "https://openweather.co.uk/blog/category/weather", "Blog - OpenWeatherMap"},
+                {9, "Blog", "https://openweather.co.uk/blog/category/weather", "https://openweather.co.uk/blog/category/weather", "Blog - OpenWeather"},
                 {10, "For Business", "https://openweather.co.uk", "https://openweather.co.uk/", "OpenWeather for business"},
                 {11, "Sign In", "/users/sign_in", "https://home.openweathermap.org/users/sign_in", "Members"},
         };
