@@ -97,7 +97,7 @@ public class TopMenuTest extends BaseTest {
             Assert.assertNotEquals(actualTitle, oldTitle);
         }
 
-        if (index != 5) {
+        if (index != 5 || index != 6) {
             Assert.assertEquals(actualURL, expectedURL);
         } else {
             Assert.assertTrue(actualURL.contains(expectedURL));
