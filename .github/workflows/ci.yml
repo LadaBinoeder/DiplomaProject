@@ -42,12 +42,6 @@ jobs:
           name: Unit tests report
           path: target/surefire-reports/TEST-*.xml
           reporter: java-junit
- 
-      - name: Attach screenshots
-        uses: actions/upload-artifact@v3
-        if: failure()
-        with:
-          path: screenshots
 
       - name: Get Allure history
         uses: actions/checkout@v2
