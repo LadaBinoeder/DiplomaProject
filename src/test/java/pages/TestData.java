@@ -15,10 +15,9 @@ public class TestData {
                 {4, "Marketplace", "https://home.openweathermap.org/marketplace", "https://home.openweathermap.org/marketplace", "Marketplace: History Bulk, History Forecast Bulk, Historical Weather Data by State for all ZIP codes, USA - OpenWeather"},
                 {5, "Pricing", "/price", "https://openweathermap.org/price", "Pricing - OpenWeatherMap"},
                 {6, "Maps", "/weathermap", "https://openweathermap.org/weathermap", "Interactive weather maps - OpenWeatherMap"},
-
                 {7, "Our Initiatives", "/our-initiatives", "https://openweathermap.org/our-initiatives", "Our Initiatives - OpenWeatherMap"},
                 {8, "Partners", "/examples", "https://openweathermap.org/examples", "Partners and solutions - OpenWeatherMap"},
-                {9, "Blog", "https://openweather.co.uk/blog/category/weather", "https://openweather.co.uk/blog/category/weather", "Blog - OpenWeatherMap"},
+                {9, "Blog", "https://openweather.co.uk/blog/category/weather", "https://openweather.co.uk/blog/category/weather", "Blog - OpenWeather"},
                 {10, "For Business", "https://openweather.co.uk", "https://openweather.co.uk/", "OpenWeather for business"},
                 {11, "Sign In", "/users/sign_in", "https://home.openweathermap.org/users/sign_in", "Members"},
         };
