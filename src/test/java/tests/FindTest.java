@@ -32,7 +32,7 @@ public class FindTest extends BaseTest {
     }
 
     @Test
-    public void testCityInSearchFieldContainsCity() throws InterruptedException {
+    public void testCityInSearchFieldContainsCity() {
         final String expectedCityName = "Rome";
 
         List<WebElement> actualResultList = openBaseURL()

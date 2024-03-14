@@ -1,6 +1,7 @@
 package base;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.Browser;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -37,8 +38,8 @@ public abstract class BaseTest {
     @BeforeMethod
     protected void beforeMethod(Method method, ITestResult result) throws MalformedURLException {
 
-        String platform = "local";
-        String browser = "chrome";
+        String platform = "remote";
+        String browser = "firefox";
 
         if(platform.equalsIgnoreCase("local")) {
             driver = BaseUtils.createDriver();
@@ -50,10 +51,8 @@ public abstract class BaseTest {
 
             if(browser.equalsIgnoreCase("chrome")) {
                 cap.setBrowserName("chrome");
-            }
-
-            if(browser.equalsIgnoreCase("firefox")) {
-                cap.setBrowserName("firefox");
+            } else if(browser.equalsIgnoreCase("firefox")) {
+                cap.setBrowserName(Browser.FIREFOX.browserName());
             }
 
             this.driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), cap);

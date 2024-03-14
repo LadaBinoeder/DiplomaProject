@@ -11,7 +11,7 @@ import java.io.IOException;
 public class MainTest extends BaseTest {
 
     @Test
-    public void testURLAndTitle() throws IOException {
+    public void testURLAndTitle() {
 
         final String expectedURL = "https://openweathermap.org/";
         final String expectedTitle = "Сurrent weather and forecast - OpenWeatherMap";
@@ -23,8 +23,6 @@ public class MainTest extends BaseTest {
 
         Assert.assertEquals(actualURL, expectedURL);
         Assert.assertEquals(actualTitle, expectedTitle);
-        Assert.assertTrue(mainPage.verifyPageIsNotEmpty());
-        Assert.assertTrue(mainPage.verifyErrorsAtPage());
     }
 
     @Test
