@@ -38,8 +38,8 @@ public abstract class BaseTest {
     @BeforeMethod
     protected void beforeMethod(Method method, ITestResult result) throws MalformedURLException {
 
-        String platform = "remote";
-        String browser = "firefox";
+        String platform = "local";
+        String browser = "chrome";
 
         if(platform.equalsIgnoreCase("local")) {
             driver = BaseUtils.createDriver();
